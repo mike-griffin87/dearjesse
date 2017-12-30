@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TextPost from './Components/TextPost/TextPost';
+import Hero from './Components/Hero/Hero';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
 
@@ -50,8 +51,11 @@ class App extends Component {
     });
 
     return (
-      <div className="post-container">
-        {posts}
+      <div>
+        <Hero title="Dear Jesse" />
+        <div className="post-container">
+          {posts}
+        </div>
       </div>
     );
   }
