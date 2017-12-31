@@ -4,10 +4,11 @@ import Background from '../../assets/img/jesse-hero.png';
 let hero = {
     'backgroundImage': `url(${Background})`,
     'backgroundSize': 'cover',
+    'backgroundPosition': 'center center',
     'display': 'flex',
     'justifyContent': 'center',
     'alignItems': 'center',
-    'height': '50vh',
+    'height': '60vh',
     'color': 'white'
 }
 

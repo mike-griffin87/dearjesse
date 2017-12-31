@@ -4,20 +4,19 @@ import TextPost from './Components/TextPost/TextPost';
 import Hero from './Components/Hero/Hero';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
-
+import {config} from './db-properties';
 
 console.clear();
-
-const config = {
-  apiKey: "AIzaSyDxGc0_nY8cncC6KtoM-3LeZ9LW8czrEZw",
-  authDomain: "dear-jesse.firebaseapp.com",
-  databaseURL: "https://dear-jesse.firebaseio.com",
-  projectId: "dear-jesse",
-  storageBucket: "dear-jesse.appspot.com",
-  messagingSenderId: "414503978295"
-};
-
 firebase.initializeApp(config);
+
+// const tags = [
+//   'Milestone',
+//   'Birthday',
+//   'Good times',
+//   'Sad times',
+//   'First time',
+//   'Proud moment'
+// ];
 
 class App extends Component {
   constructor() {
@@ -42,8 +41,12 @@ class App extends Component {
   render() {
 
     const posts = this.state.posts.map(post => {
-      if(post.type === 'image') {
-        return <TextPost key={post.id} title={post.title} liked={post.liked} />
+      if(post.type === 'text') {
+        return <TextPost 
+                  key={post.id}
+                  title={post.title}
+                  text={post.text}
+                  tags={post.tags.map((tag) => <li>#{tag}</li>)} />
       } else {
         return <TextPost key={post.id} title="it worked" liked={post.liked}/>
       }
