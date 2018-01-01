@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TextPost from './Components/TextPost/TextPost';
+import ImagePost from './Components/ImagePost/ImagePost';
 import Hero from './Components/Hero/Hero';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
@@ -27,6 +28,10 @@ class App extends Component {
     }
   }
 
+  test() {
+    console.log('hello worlds');
+  }
+
   componentDidMount() {
     const db = firebase.firestore();
     db.collection("Posts").get().then((querySnapshot) => {
@@ -41,22 +46,34 @@ class App extends Component {
   render() {
 
     const posts = this.state.posts.map(post => {
-      if(post.type === 'text') {
-        return <TextPost 
-                  key={post.id}
-                  title={post.title}
-                  text={post.text}
-                  tags={post.tags.map((tag) => <li>#{tag}</li>)} />
-      } else {
-        return <TextPost key={post.id} title="it worked" liked={post.liked}/>
+      switch(post.type) {
+        case 'text':
+          return <TextPost 
+            key={post.id}
+            title={post.title}
+            text={post.text}
+            tags={post.tags.map((tag, i) => <li key={i}>#{tag}</li>)} />
+        case 'image':
+          return <ImagePost
+            onClick={() => this.test()}
+            key={post.id}
+            title={post.title}
+            images={post.coverImage}
+            numOfImages={post.images.length}
+            tags={post.tags.map((tag, i) => <li key={i}>#{tag}</li>)} />
+        default:
+          return <TextPost 
+            key={post.id}
+            title={post.title}
+            text={post.text}
+            tags={post.tags.map((tag, i) => <li key={i}>#{tag}</li>)} />
       }
-      
     });
 
     return (
       <div>
         <Hero title="Dear Jesse" />
-        <div className="post-container">
+        <div className="posts-container">
           {posts}
         </div>
       </div>
