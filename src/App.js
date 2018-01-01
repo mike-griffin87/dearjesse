@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TextPost from './Components/TextPost/TextPost';
 import ImagePost from './Components/ImagePost/ImagePost';
-import Hero from './Components/Hero/Hero';
+import HeroContainer from './Components/HeroContainer/HeroContainer';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
 import {config} from './db-properties';
@@ -72,7 +72,7 @@ class App extends Component {
 
     return (
       <div>
-        <Hero title="Dear Jesse" />
+        <HeroContainer title="Dear Jesse" />
         <div className="posts-container">
           {posts}
         </div>
