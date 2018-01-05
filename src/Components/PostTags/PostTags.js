@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 let showingMoreTags = {
     'display': 'inline-block'
@@ -7,6 +8,25 @@ let showingMoreTags = {
 let noMoreTags = {
     'display': 'none'
 }
+
+const TagUl = styled.ul`
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background: transparent;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 50;
+    & li, & span {
+        font-size: 12px;
+        color: #bbb;
+        display: inline-block;
+        padding: 12px 8px 12px 8px;
+        text-transform: uppercase;
+    }
+`
 
 class PostTags extends React.Component {
     constructor(){
@@ -38,12 +58,13 @@ class PostTags extends React.Component {
         }
         
         return(
-            <ul className="postTags">
+            <TagUl>
                 {this.props.tags}
-                <span style={this.state.moreTags ? showingMoreTags : noMoreTags} className="tag-text">
+                <span
+                    style={this.state.moreTags ? showingMoreTags : noMoreTags}>
                     {`+ ${this.state.overflowTags.length} more`}
                 </span>
-            </ul>
+            </TagUl>
         )
     }
 }

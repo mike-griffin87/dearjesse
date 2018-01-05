@@ -1,69 +1,61 @@
 import React from 'react';
-import PostTags from '../PostTags/PostTags'
+import PostTags from '../PostTags/PostTags';
+import styled from 'styled-components';
 import imageCounter from '../../assets/img/image-counter.png';
 
+const PostInfo = styled.div`
+    align-self: end;
+    z-index: 50;
+    padding: 0 24px;
+`
+const TagCounter = styled.span`
+    margin-left: -6px;
+    color: white;
+    font-weight: 100;
+`
 
 class ImagePost extends React.Component {
 
     render(){
-        let coverPhoto = {
-            backgroundImage: `url(${this.props.images})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-            borderRadius: '6px',
-            width: '100%',
-            height: '100%'
-        }
 
-        let postCard = {
-            borderRadius: '6px',
-            boxShadow: '0px 0px 8px rgba(0,0,0, .2)',
-            position: 'relative',
-            overflow: 'hidden'
-        }
+        const Post = styled.div`
+            background-image: url(${this.props.images});
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 6px;
+            box-shadow: 0px 0px 8px rgba(0,0,0, .2);
+            overflow: hidden;
+            display: grid;
+            grid-auto-rows: 1fr auto;
+            justify-items: end;
+            
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .15);
 
-        let overlay = {
-            borderRadius: '6px',
-            position: 'absolute',
-            display: 'block',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            background: '#003049',
-            opacity: '.4',
-            boxShadow: '0px 0px 8px rgba(0,0,0, .2)'
-        }
-
-        let light = {
-            'color': 'white!important'
-        }
-
-        let imageInfo = {
-            'textAlign': 'right',
-            'padding': '0 24px',
-            'zIndex': '50'
-        }
+            }
+        `
 
         return(
-            <div
-                className="post-container"
-                // eslint-disable-next-line
-                style={postCard, coverPhoto}
-                onClick={this.props.onClick}
-            >
-                <span style={overlay}></span>
-                <div style={imageInfo}>
+            <Post onClick={this.props.onClick}>
+                <PostInfo>
                     <ul>
                         <li>
                             <img src={imageCounter} alt="counter"/>
-                            <span className="num-of-images">{this.props.numOfImages}</span>
+                            <TagCounter>{this.props.numOfImages}</TagCounter>
                         </li>
                     </ul>
-                </div>
-                <PostTags style={light} tags={this.props.tags} />
-            </div>
+                </PostInfo>
+                <PostTags tags={this.props.tags} />
+            </Post>
         )
     }
 }

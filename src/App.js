@@ -6,18 +6,18 @@ import HeroContainer from './Components/HeroContainer/HeroContainer';
 import firebase from '@firebase/app';
 import '@firebase/firestore';
 import {config} from './db-properties';
+import styled from 'styled-components';
 
 console.clear();
 firebase.initializeApp(config);
 
-// const tags = [
-//   'Milestone',
-//   'Birthday',
-//   'Good times',
-//   'Sad times',
-//   'First time',
-//   'Proud moment'
-// ];
+const PostsContainer = styled.div`
+display: grid;
+padding: 32px;
+grid-template-columns: repeat(3, 1fr);
+grid-auto-rows: auto;
+grid-gap: 24px;
+`
 
 class App extends Component {
   constructor() {
@@ -73,9 +73,9 @@ class App extends Component {
     return (
       <div>
         <HeroContainer title="Dear Jesse" />
-        <div className="posts-container">
+        <PostsContainer>
           {posts}
-        </div>
+        </PostsContainer>
       </div>
     );
   }
