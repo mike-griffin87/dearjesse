@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PostTags from '../PostTags/PostTags';
 import styled from 'styled-components';
 
@@ -26,6 +27,12 @@ class TextPost extends React.Component {
             </PostContainer>
         )
     }
+}
+
+TextPost.propTypes = {
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default TextPost;

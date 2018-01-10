@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Background from '../../assets/img/jesse-hero.png';
 import styled from 'styled-components';
 
@@ -23,5 +24,9 @@ const Hero = styled.div`
 `
 
 const HeroContainer = ({title}) => <Hero><Title>{title}</Title></Hero>
+
+HeroContainer.propTypes = {
+    title: PropTypes.string.isRequired
+}
 
 export default HeroContainer;

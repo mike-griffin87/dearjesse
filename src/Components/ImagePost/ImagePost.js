@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PostTags from '../PostTags/PostTags';
 import styled from 'styled-components';
 import imageCounter from '../../assets/img/image-counter.png';
@@ -58,6 +59,12 @@ class ImagePost extends React.Component {
             </Post>
         )
     }
+}
+
+ImagePost.propTypes = {
+    onClick: PropTypes.func,
+    imageCounter: PropTypes.number,
+    tags: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default ImagePost;

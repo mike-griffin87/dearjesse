@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 let showingMoreTags = {
@@ -40,22 +41,30 @@ class PostTags extends React.Component {
     }
 
     componentWillMount(){
-        const numOfAllowedTags = 3;
-        let numberOfTags = this.props.tags.length;
-        if(numberOfTags > numOfAllowedTags) {
-            let updatedOverflowTags = this.props.tags.splice(numOfAllowedTags);
-            this.setState({overflowTags: updatedOverflowTags});
-        } else if(numberOfTags <= numOfAllowedTags) {
-            this.setState((prevState) => {
-                return {moreTags: !prevState.moreTags}
-            });
-        }
+        if(this.props.tags){
+            const numOfAllowedTags = 3;
+            let numberOfTags = this.props.tags.length;
+            if(numberOfTags > numOfAllowedTags) {
+                let updatedOverflowTags = this.props.tags.splice(numOfAllowedTags);
+                this.setState({overflowTags: updatedOverflowTags});
+            } else if(numberOfTags <= numOfAllowedTags) {
+                this.setState((prevState) => {
+                    return {moreTags: !prevState.moreTags}
+                });
+            }
+        } else {
+            this.setState(() => {
+            return {moreTags: false}
+        });}
     }
 
+    
+
     render(){
-        for(let i=0; i<this.state.overflowTags.length; i++){
-            console.log(this.state.overflowTags[i].props.children[1]);
-        }
+        // GETTING OVERFLOW TAGS IN A USABLE FORM
+        // for(let i=0; i<this.state.overflowTags.length; i++){
+        //     console.log(this.state.overflowTags[i].props.children[1]);
+        // }
         
         return(
             <TagUl>
@@ -67,6 +76,10 @@ class PostTags extends React.Component {
             </TagUl>
         )
     }
+}
+
+PostTags.propTypes = {
+    tags: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default PostTags;
