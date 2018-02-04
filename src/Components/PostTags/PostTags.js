@@ -19,13 +19,14 @@ const TagUl = styled.ul`
     background: transparent;
     justify-content: center;
     align-items: flex-end;
+    font-weight: 100;
     z-index: 50;
     & li, & span {
         font-size: 12px;
         color: #bbb;
         display: inline-block;
         padding: 12px 8px 12px 8px;
-        text-transform: uppercase;
+        text-transform: capitalize;
     }
 `
 

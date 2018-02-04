@@ -4,22 +4,23 @@ import PostTags from '../PostTags/PostTags';
 import styled from 'styled-components';
 import imageCounter from '../../assets/img/image-counter.png';
 
+
 const PostInfo = styled.div`
     align-self: end;
     z-index: 50;
     padding: 0 24px;
 `
-const TagCounter = styled.span`
+const ImageCounter = styled.span`
     margin-left: -6px;
     color: white;
     font-weight: 100;
 `
 
 class ImagePost extends React.Component {
-
+    
     render(){
-
         const Post = styled.div`
+            height: 300px;
             background-image: url(${this.props.images});
             background-size: cover;
             background-position: center center;
@@ -46,12 +47,12 @@ class ImagePost extends React.Component {
         `
 
         return(
-            <Post onClick={this.props.onClick}>
+            <Post>
                 <PostInfo>
                     <ul>
                         <li>
-                            <img src={imageCounter} alt="counter"/>
-                            <TagCounter>{this.props.numOfImages}</TagCounter>
+                            {/* <img src={imageCounter} alt="counter"/> */}
+                            {/* <ImageCounter>{this.props.numOfImages}</ImageCounter> */}
                         </li>
                     </ul>
                 </PostInfo>
@@ -62,7 +63,6 @@ class ImagePost extends React.Component {
 }
 
 ImagePost.propTypes = {
-    onClick: PropTypes.func,
     imageCounter: PropTypes.number,
     tags: PropTypes.arrayOf(PropTypes.object)
 }

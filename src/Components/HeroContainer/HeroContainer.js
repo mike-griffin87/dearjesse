@@ -13,7 +13,6 @@ const Title = styled.h1`
     text-align: center;
 `
 const Hero = styled.div`
-    background: pink;
     background-image: url(${Background});
     background-size: cover;
     background-position: center center;

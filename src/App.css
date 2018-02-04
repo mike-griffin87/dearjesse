@@ -11,7 +11,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-h1, h2 {
+h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
@@ -37,4 +37,9 @@ ul {
 
 li {
   list-style: none;
+}
+
+.m-grid {
+  margin-left: 2.5%;
+  width: 100%!important;
 }

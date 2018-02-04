@@ -4,6 +4,8 @@ import PostTags from '../PostTags/PostTags';
 import styled from 'styled-components';
 
 const Post = styled.div`
+    min-height: 300px;
+    height: auto;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -31,7 +33,7 @@ class VideoPost extends React.Component {
                     allow="encrypted-media"
                     allowFullScreen>
                 </iframe>
-                <PostTags tags={this.props.tags} />
+                {/* <PostTags tags={this.props.tags} /> */}
             </Post>
         )
     }
