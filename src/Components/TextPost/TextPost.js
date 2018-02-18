@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PostTags from '../PostTags/PostTags';
 import PostTypeBadge from '../PostTypeBadge/PostTypeBadge';
+import JesseAge from '../JesseAge/JesseAge';
 import styled from 'styled-components';
 
 const PostContainer = styled.div`
@@ -36,6 +37,7 @@ class TextPost extends React.Component {
                 <PostContent>
                     <h2>{this.props.title}</h2>
                     <p>{this.props.subtitle}</p>
+                    <JesseAge  eventYear={this.props.eventYear}/>
                 </PostContent>
                 <PostTags tags={this.props.tags} />
             </PostContainer>

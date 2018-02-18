@@ -9,7 +9,6 @@ import firebase from '@firebase/app';
 import '@firebase/firestore';
 import {config} from '../../db-properties';
 import styled from 'styled-components';
-import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 console.clear();
 firebase.initializeApp(config);
@@ -72,6 +71,7 @@ class PostCollection extends Component {
         case 'text':
           return <TextPost 
             key={post.id}
+            eventYear={post.dateOfEvent}
             type={post.type}
             title={post.title}
             subtitle={post.subTitle}
