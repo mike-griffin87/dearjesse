@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PostTags from '../PostTags/PostTags';
 import PostTypeBadge from '../PostTypeBadge/PostTypeBadge';
+import Button from '../Button/Button';
 import JesseAge from '../JesseAge/JesseAge';
 import styled from 'styled-components';
 
@@ -17,7 +18,7 @@ const PostContainer = styled.div`
 `
 const PostContent = styled.div`
     text-align: center;
-
+    margin-top: 50px;
     & h2 {
         text-transform: uppercase;
     }
@@ -37,7 +38,7 @@ class TextPost extends React.Component {
                 <PostContent>
                     <h2>{this.props.title}</h2>
                     <p>{this.props.subtitle}</p>
-                    <JesseAge  eventYear={this.props.eventYear}/>
+                    <Button text="Hello World" url="Test Url" />
                 </PostContent>
                 <PostTags tags={this.props.tags} />
             </PostContainer>
